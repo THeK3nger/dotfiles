@@ -1,0 +1,6 @@
+[user]
+name = "Davide Aversa"
+email = "thek3nger@gmail.com"
+
+[ui]
+merge-editor = "vscode"

@@ -1,0 +1,57 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = Davide Aversa
+	email = thek3nger@gmail.com
+    signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMvVdJs4HZOaE/6qEPJ9Vb4TVyY1x3Jp9ZEpZLK2YlbK
+
+[alias]
+    lg = !"git lg1"
+    lg1 = !"git lg1-specific --all"
+    lg2 = !"git lg2-specific --all"
+    lg3 = !"git lg3-specific --all"
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+
+    lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
+    lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+    lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
+    shorty = status -sb
+    please = push --force-with-lease
+    size = count-objects -vH
+    dft = difftool
+
+[commit]
+	gpgSign = false
+[pull]
+	rebase = false
+[maintenance]
+	repo = /Users/davide/Code/_Helvia/hbf-core-api
+	repo = /Users/davide/Code/_Helvia/hbf2
+	repo = /Users/davide/Code/_Helvia/hbf-core
+[core]
+	editor = nvim
+[grep]
+    lineNumber = true
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+  gpgsign = true
+
+[merge]
+    tool = p4merge
+	conflictstyle = zdiff3
+[init]
+	defaultBranch = main
+[diff]
+    tool = difftastic
+[difftool]
+    prompt = false
+[difftool "difftastic"]
+    cmd = difft "$LOCAL" "$REMOTE"
+[page]
+    difftool = true

@@ -1,0 +1,93 @@
+# ~/.zshrc
+
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=100000
+SAVEHIST=$HISTSIZE
+
+PATH="$HOME/.cargo/bin:$PATH"
+export EDITOR="vim"
+
+export NPM_TOKEN="{{ onepasswordRead "op://Private/NPM_TOKEN/credenziale" }}"
+
+export MAVEN_OPTS="--add-opens=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.jvm=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED"
+
+setopt hist_ignore_all_dups # remove older duplicate entries from history
+setopt hist_reduce_blanks # remove superfluous blanks from history items
+setopt inc_append_history # save history entries as soon as they are entered
+setopt share_history # share history between different instances of the shell
+
+setopt auto_cd # cd by typing directory name if it's not a command
+setopt correct_all # autocorrect commands
+
+function jd { bc <<< "scale=6; $(date +%s)/86400+2440587.5"; }
+
+alias ls=eza
+alias lsg="eza --long --git"
+alias wm="nvim ~/Dropbox/Hypomnemata/__WM.md"
+alias t="nvim ~/todo.md"
+alias p4merge='/Applications/p4merge.app/Contents/MacOS/p4merge'
+alias fsl='fossil'
+
+source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
+antidote load ${ZDOTDIR:-$HOME}/.zsh_plugins.txt
+
+export PATH="$HOME/.poetry/bin:$PATH"
+[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
+export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.emacs.d/bin/:$PATH
+export PATH=$HOME/Library/Python/3.8/bin:$PATH
+
+export QSHARD_DAILY_PATH="/Users/davide/Dropbox/Hypomnemata/Daily Notes"
+
+#SPACESHIP_TIME_SHOW=true
+
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+seasonal_chevrons () {
+  local date=$(date +"%b")
+  local chevrons="❯❯❯"
+
+  case $date in
+    # spring
+    *Mar*|*Apr*|*Mag*)
+      chevrons="%F{cyan}❯%F{green}❯%F{yellow}❯%f"
+      ;;
+    # summer
+    *Giu*|*Lug*|*Ago*)
+      chevrons="%F{green}❯%F{yellow}❯%F{red}❯%f"
+      ;;
+    # fall
+    *Set*|*Ott*|*Nov*)
+      chevrons="%F{yellow}❯%F{red}❯%F{magenta}❯%f"
+      ;;
+    # winter
+    *Dic*|*Gen*|*Feb*)
+      chevrons="%F{magenta}❯%F{cyan}❯%F{green}❯%f"
+      ;;
+    *)
+      ;;
+  esac
+
+  echo -en $chevrons
+}
+
+export PS1=$PS1'$(seasonal_chevrons) '
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export CXX="/usr/bin/clang"
+export LEDGER_FILE="$HOME/Ledger/all.journal"
+
+[ -f "/Users/davide/.ghcup/env" ] && source "/Users/davide/.ghcup/env" # ghcup-env
+
+export PATH="$PATH:$HOME/.docker/bin"
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
