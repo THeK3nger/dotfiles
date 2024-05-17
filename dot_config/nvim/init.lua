@@ -33,8 +33,6 @@ require("obsidian").setup({
   }
 })
 
-vim.g['keysound_volume'] = 1000
-
 require("nvim-tree").setup()
 
 local cmp = require"cmp"
