@@ -96,9 +96,5 @@ Plug 'hrsh7th/nvim-cmp'
 
 Plug 'epwalsh/obsidian.nvim'
 
--- Funny/For Writing
-Plug 'skywind3000/vim-keysound'
-
 vim.call('plug#end')
-
 
