@@ -4,3 +4,4 @@ email = "thek3nger@gmail.com"
 
 [ui]
 merge-editor = "vscode"
+default-command = "log"
