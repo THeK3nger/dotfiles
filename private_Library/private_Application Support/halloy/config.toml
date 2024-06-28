@@ -1,0 +1,23 @@
+# Halloy config.
+#
+# For a complete list of available options,
+# please visit https://halloy.squidowl.org/configuration/index.html
+
+[servers.liberachat]
+nickname = "thek3nger"
+nick_password_file = "/Users/davide/.config/liberasecret"
+server = "irc.libera.chat"
+channels = ["#halloy", "#python"]
+
+[buffer.channel.topic]
+enabled = true
+max_lines = 2
+
+[buffer.server_messages.join]
+enabled = false
+username_format = "full"
+
+[buffer.server_messages.quit]
+enabled = true
+smart = 30
+username_format = "short"
