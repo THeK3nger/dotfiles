@@ -5,7 +5,9 @@
 
 [servers.liberachat]
 nickname = "thek3nger"
+username = "thek3nger"
 nick_password_file = "/Users/davide/.config/liberasecret"
+password_file = "/Users/davide/.config/liberasecret"
 server = "irc.libera.chat"
 channels = ["#halloy", "#python"]
 
