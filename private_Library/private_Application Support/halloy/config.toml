@@ -9,7 +9,7 @@ username = "thek3nger"
 nick_password_file = "/Users/davide/.config/liberasecret"
 password_file = "/Users/davide/.config/liberasecret"
 server = "irc.libera.chat"
-channels = ["#halloy", "#python"]
+channels = ["#halloy", "#python", "#typescript"]
 
 [buffer.channel.topic]
 enabled = true
