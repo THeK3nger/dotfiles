@@ -17,7 +17,7 @@ vim.cmd("colorscheme " .. theme)
 
 vim.g['vimwiki_list'] = {{path = '~/Dropbox/Hypomnemata', syntax = 'markdown', ext = '.md'}}
 
-require('lspconfig').tsserver.setup{}
+require('lspconfig').ts_ls.setup{}
 
 local neogit = require('neogit')
 neogit.setup {}
