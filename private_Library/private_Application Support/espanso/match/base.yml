@@ -68,7 +68,7 @@ matches:
   - trigger: ";sign"
     replace: "Signed-of-by: Davide Aversa <thek3nger@gmail.com>"
   - trigger: ";hsign"
-    replace: "Signed-of-by: Davide Aversa <davide.aversa@helvia.io"
+    replace: "Signed-of-by: Davide Aversa <davide.aversa@helvia.io>"
   - trigger: ";reviewed"
     replace: "Reviewed-by: Davide Aversa <thek3nger@gmail.com>"
   - trigger: ";hreviewed"
