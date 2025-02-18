@@ -52,6 +52,8 @@ matches:
     replace: "https://www.davideaversa.it"
   - trigger: ";me.gh"
     replace: "https://github.com/THeK3nger"
+  - trigger: ";me.address"
+    replace: "Davide Aversa\nVia Monti Lepini 111\nCisterna di Latina (LT), 04012"
 
   # Jira
   - trigger: ";jiraus"
