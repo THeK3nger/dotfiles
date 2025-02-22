@@ -1,11 +1,20 @@
 return {
-    {
-        "NeogitOrg/neogit",
-        dependencies = {
-            "nvim-lua/plenary.nvim",  -- required
-            "sindrets/diffview.nvim", -- optional - Diff integration
-            "nvim-telescope/telescope.nvim",
-        },
-        config = true
-    }
+	{
+		"NeogitOrg/neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- required
+			"sindrets/diffview.nvim", -- optional - Diff integration
+			"nvim-telescope/telescope.nvim",
+		},
+		config = true,
+	},
+
+	{
+		"airblade/vim-gitgutter",
+		event = "BufRead", -- or another event that triggers the plugin
+		config = function()
+			-- Optional: configure vim-gitgutter here
+			vim.cmd("GitGutterEnable")
+		end,
+	},
 }
