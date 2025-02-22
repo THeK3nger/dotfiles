@@ -7,5 +7,6 @@ require('options')
 
 require('config.lazy')
 
+vim.o.guifont = "JetBrainsMono Nerd Font"
 vim.cmd.colorscheme "melange"
 vim.opt.termguicolors = true
