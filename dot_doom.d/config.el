@@ -151,7 +151,7 @@
 ; Relative Numbers
 (setq display-line-numbers 'relative)
 
-(obsidian-specify-path "~/Dropbox/Notes")
+(setq obsidian-specify-path "~/Dropbox/Notes")
 ;; If you want a different directory of `obsidian-capture':
 (setq obsidian-inbox-directory "_Inbox")
 
