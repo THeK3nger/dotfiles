@@ -75,3 +75,14 @@ matches:
     replace: "Reviewed-by: Davide Aversa <thek3nger@gmail.com>"
   - trigger: ";hreviewed"
     replace: "Reviewed-by: Davide Aversa <davide.aversa@helvia.io>"
+
+  # WIKITOOLS
+  - trigger: ";wkcite"
+    replace: "{{output}}"
+    vars:
+      - name: "clipboard"
+        type: clipboard
+      - name: "output"
+        type: script
+        params:
+          args: [python3, "/Users/davide/Code/wikitools/cite_conversion.py", "{{clipboard}}"]
