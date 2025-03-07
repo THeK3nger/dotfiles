@@ -25,3 +25,6 @@ map('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', { noremap = true })
 
 -- Exit terminal mode
 map('t', '<leader><Esc>', '<C-\\><C-n>', { noremap = true })
+
+-- Oil
+map('n', '-', '<CMD>Oil<CR>', { desc = "Open parent directory" })
