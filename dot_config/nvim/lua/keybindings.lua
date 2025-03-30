@@ -3,7 +3,12 @@ local function map(mode, combo, mapping, opts)
     if opts then
         options = vim.tbl_extend('force', options, opts)
     end
-    vim.api.nvim_set_keymap(mode, combo, mapping, options)
+    -- Use vim.keymap.set for Lua functions
+    if type(mapping) == "function" then
+        vim.keymap.set(mode, combo, mapping, options)
+    else
+        vim.api.nvim_set_keymap(mode, combo, mapping, options)
+    end
 end
 
 vim.g.mapleader = ','
@@ -28,3 +33,6 @@ map('t', '<leader><Esc>', '<C-\\><C-n>', { noremap = true })
 
 -- Oil
 map('n', '-', '<CMD>Oil<CR>', { desc = "Open parent directory" })
+map('n', '<leader>h', function()
+    require("oil").toggle_hidden()
+end, { desc = "Toggle hidden files in oil.nvim" })
