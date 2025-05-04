@@ -37,3 +37,6 @@ map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 map("n", "<leader>h", function()
 	require("oil").toggle_hidden()
 end, { desc = "Toggle hidden files in oil.nvim" })
+
+-- LazyJJ
+map("n", "<leader>jj", ":LazyJJ<CR>", { desc = "LazyJJ" })
