@@ -81,6 +81,7 @@ seasonal_chevrons () {
 export PS1=$PS1'$(seasonal_chevrons) '
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export LEDGER_FILE="$HOME/Ledger/all.journal"
+export HOP_HOP_DIR="$HOME/Code/_Scripts/"
 
 [ -f "/Users/davide/.ghcup/env" ] && source "/Users/davide/.ghcup/env" # ghcup-env
 
@@ -92,3 +93,8 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
 
 [[ ! -r /Users/davide/.opam/opam-init/init.zsh ]] || source /Users/davide/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/davide/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
