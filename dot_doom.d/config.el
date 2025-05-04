@@ -29,7 +29,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-nord-light)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -59,6 +59,8 @@
 ;; - `map!' for binding new keys
 ;;
 ;; To get information about any of these functions/macros, move the cursor over
+;;
+;;
 ;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
 ;; This will open documentation for it, including demos of how they are used.
 ;;
@@ -182,3 +184,10 @@
 (setq calibredb-root-dir "~/Dropbox/Books/Library")
 (setq calibredb-db-dir (expand-file-name "metadata.db" calibredb-root-dir))
 (setq calibredb-library-alist '(("~/Dropbox/Books/Library")))
+
+;; Remap jk to ESC
+(use-package! key-chord
+  :config
+  (key-chord-mode 1)
+  (setq key-chord-two-keys-delay 0.5)
+  (key-chord-define evil-insert-state-map "jk" 'evil-normal-state))
