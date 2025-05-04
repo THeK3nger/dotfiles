@@ -51,7 +51,7 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 seasonal_chevrons () {
-  local date=$(date +"%b")
+  local date=$(LC_TIME=it_IT.UTF-8 date +"%b")
   local chevrons="❯❯❯"
 
   case $date in
