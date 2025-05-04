@@ -13,12 +13,17 @@
   "assistant": {
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-latest"
+      "model": "claude-3-7-sonnet-latest"
     },
     "version": "2"
   },
-  "theme": "Gruvbox Dark Hard",
+  "theme": "Melange Dark",
   "buffer_font_family": "JetBrains Mono",
   "buffer_font_size": 13,
-  "vim_mode": true
+  "vim_mode": true,
+  "diagnostics": {
+    "inline": {
+      "enabled": true
+    }
+  }
 }
