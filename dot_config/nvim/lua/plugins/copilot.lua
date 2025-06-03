@@ -36,7 +36,14 @@ return {
 		},
 		build = "make tiktoken", -- Only on MacOS or Linux
 		opts = {
-			-- See Configuration section for options
+			prompts = {
+				Grammar = {
+					prompt = "Correct the grammar of this passage.",
+					system_prompt = "You are a helpful assistant that corrects grammar mistakes.",
+					-- mapping = "<leader>ccmc",
+					description = "Correct the grammar of the given passage.",
+				},
+			},
 		},
 		-- See Commands section for default commands if you want to lazy load on them
 	},
