@@ -6,9 +6,6 @@ email = "thek3nger@gmail.com"
 merge-editor = "vscode"
 default-command = "log"
 
-[git]
-subprocess = true
-
 [signing]
 behavior = "own"
 backend = "ssh"
