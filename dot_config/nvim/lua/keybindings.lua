@@ -40,3 +40,12 @@ end, { desc = "Toggle hidden files in oil.nvim" })
 
 -- LazyJJ
 map("n", "<leader>jj", ":LazyJJ<CR>", { desc = "LazyJJ" })
+
+-- Various Custom Commands
+vim.api.nvim_create_user_command("CmpDisable", function()
+	require("cmp").setup.buffer({ enabled = false })
+end, {})
+
+vim.api.nvim_create_user_command("CmpEnable", function()
+	require("cmp").setup.buffer({ enabled = true })
+end, {})
