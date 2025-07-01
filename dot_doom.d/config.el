@@ -19,7 +19,7 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Monaspace Argon" :size 12 :weight 'semi-light)
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 14)
       doom-variable-pitch-font (font-spec :family "Charter" :size 14))
 
 (add-hook! 'org-mode-hook #'mixed-pitch-mode)
@@ -38,6 +38,7 @@
 (setq org-journal-dir "~/Dropbox/org/journal/")
 (setq org-journal-file-type 'weekly)
 (setq org-journal-file-format "%Y%m%d.org")
+(setq org-journal-date-format "%A, %d/%m/%Y")
 
 (setq org-id-method 'ts)
 
@@ -66,6 +67,9 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+;; GPG
+(setq epa-file-encrypt-to '("devide.aversa@proton.me"))
 
 ;; Holidays
 (setq holiday-general-holidays
@@ -105,9 +109,9 @@
   ;; Capture Templates
   (setq org-capture-templates
       '(("b" "Blog Post" entry (file+headline "~/Dropbox/org/main.org" "Blog")
-         "* TODO Blog Post on %^{title} [/]\n** TODO Research and Drafting\n** TODO Editing and Publishing\n"
-         )))
-  )
+         "* TODO Blog Post on %^{title} [/]\n** TODO Research and Drafting\n** TODO Editing and Publishing\n")
+        ("j" "Jira Task" entry (file+headline "~/Dropbox/org/helvia.org" "AI Lab Tasks")
+         "* TODO [%^{ticket}] %^{title}\n[[https://helvia.atlassian.net/browse/%\1][Link to Ticket]]"))))
 
 (setq org-log-into-drawer t)
 (setq org-log-done 'time)
@@ -137,9 +141,8 @@
 
 ; Deft
 (setq deft-extensions '("txt" "md" "org")
-      deft-directory "~/Dropbox/Notes"
+      deft-directory "~/Dropbox/org/notes"
       deft-recursive t
-      deft-use-filename-as-title t
       deft-use-filter-string-for-filename t)
 
 ; Markdown
@@ -150,12 +153,10 @@
 (setq ispell-program-name "aspell")
 (setq ispell-dictionary "en_US")
 
-; Relative Numbers
-(setq display-line-numbers 'relative)
-
 (setq obsidian-directory "~/Dropbox/Notes")
 ;; If you want a different directory of `obsidian-capture':
 (setq obsidian-inbox-directory "_Inbox")
+(setq obsidian-daily-notes-directory "06 - Time")
 
 ;; Replace standard command with Obsidian.el's in obsidian vault:
 ;; (bind-key (kbd "C-c C-o") 'obsidian-follow-link-at-point 'obsidian-mode-map)
@@ -191,3 +192,59 @@
   (key-chord-mode 1)
   (setq key-chord-two-keys-delay 0.5)
   (key-chord-define evil-insert-state-map "jk" 'evil-normal-state))
+
+;; Denote
+;; (setq denote-directory (expand-file-name "~/Dropbox/org/notes/"))
+(use-package denote
+  :ensure t
+  :hook (dired-mode . denote-dired-mode)
+  :bind
+  (("C-c n n" . denote)
+   ("C-c n r" . denote-rename-file)
+   ("C-c n l" . denote-link)
+   ("C-c n b" . denote-backlinks)
+   ("C-c n d" . denote-dired)
+   ("C-c n g" . denote-grep))
+  :config
+  (setq denote-directory (expand-file-name "~/Dropbox/org/notes"))
+
+  ;; Automatically rename Denote buffers when opening them so that
+  ;; instead of their long file name they have, for example, a literal
+  ;; "[D]" followed by the file's title.  Read the doc string of
+  ;; `denote-rename-buffer-format' for how to modify this.
+  (denote-rename-buffer-mode 1))
+
+
+
+;; Tell Emacs where to get the Typst grammar
+(setq treesit-language-source-alist
+      (append treesit-language-source-alist
+              '((typst . ("https://github.com/uben0/tree-sitter-typst")))))
+
+;; Keybindings
+
+(map! :leader
+      (:prefix ("j" . "journal") ;; org-journal bindings
+        :desc "Create new journal entry" "j" #'org-journal-new-entry
+        :desc "Open previous entry" "p" #'org-journal-open-previous-entry
+        :desc "Open next entry" "n" #'org-journal-open-next-entry
+        :desc "Search journal" "s" #'org-journal-search-forever))
+
+;; The built-in calendar mode mappings for org-journal
+;; conflict with evil bindings
+(map!
+ (:map calendar-mode-map
+   :n "o" #'org-journal-display-entry
+   :n "p" #'org-journal-previous-entry
+   :n "n" #'org-journal-next-entry
+   :n "O" #'org-journal-new-date-entry))
+
+;; Local leader (<SPC m>) bindings for org-journal in calendar-mode
+;; I was running out of bindings, and these are used less frequently
+;; so it is convenient to have them under the local leader prefix
+(map!
+ :map (calendar-mode-map)
+ :localleader
+ "w" #'org-journal-search-calendar-week
+ "m" #'org-journal-search-calendar-month
+ "y" #'org-journal-search-calendar-year)
