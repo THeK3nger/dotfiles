@@ -19,8 +19,10 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 14)
-      doom-variable-pitch-font (font-spec :family "Charter" :size 14))
+(setq doom-font (font-spec :family "Aporetic Sans Mono" :size 15)
+      doom-big-font (font-spec :family "Aporetic Sans Mono" :size 20)
+      doom-serif-font (font-spec :family "Aporetic Serif" :size 15)
+      doom-variable-pitch-font (font-spec :family "Aporetic Sans" :height 1.0))
 
 (add-hook! 'org-mode-hook #'mixed-pitch-mode)
 ;;(add-hook! 'org-mode-hook #'solaire-mode)
@@ -29,7 +31,38 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-nord-light)
+;;(setq doom-theme 'doom-one-light)
+(setq doom-theme 'doric-earth)
+
+(after! doom-themes
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t))
+
+;; This is a an example configuration of the doric themes, but I don't think
+;; it is necessary in Doom.
+;;
+;; (use-package! doric-themes
+;;   :ensure t
+;;   :demand t
+;;   :config
+;;   ;; These are the default values.
+;;   (setq doric-themes-to-toggle '(doric-light doric-dark))
+;;   (setq doric-themes-to-rotate doric-themes-collection)
+
+;;   (doric-themes-select 'doric-light)
+
+;;   ;; ;; To load a random theme instead, use something like one of these:
+;;   ;;
+;;   ;; (doric-themes-load-random)
+;;   ;; (doric-themes-load-random 'light)
+;;   ;; (doric-themes-load-random 'dark)
+
+;;   ;; ;; For optimal results, also define your preferred font family (or use my `fontaine' package):
+;;   ;;
+;;   (set-face-attribute 'default nil :family "Aporetic Sans Mono" :height 160)
+;;   (set-face-attribute 'variable-pitch nil :family "Aporetic Sans" :height 1.0)
+;;   (set-face-attribute 'fixed-pitch nil :family "Aporetic Sans Mono" :height 1.0)
+;; )
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -98,32 +131,39 @@
 (setq holiday-bahai-holidays nil)
 (setq holiday-oriental-holidays nil)
 
-;; Calendar configuration
-(setq org-agenda-start-on-weekday 1)
-(setq calendar-week-start-day 1)
-
+;;
 ;; Org-Mode Configurations
+;;
 
 (after! org
+
+  ;; Calendar configuration
+  (setq org-agenda-start-on-weekday 1)
+  (setq calendar-week-start-day 1)
   (add-to-list 'org-modules 'org-habit)
+
   ;; Capture Templates
   (setq org-capture-templates
       '(("b" "Blog Post" entry (file+headline "~/Dropbox/org/main.org" "Blog")
-         "* TODO Blog Post on %^{title} [/]\n** TODO Research and Drafting\n** TODO Editing and Publishing\n")
+         "- [ ] Blog Post on %^{title} [0/2]\n** - [ ] Research and Drafting\n** - [ ] Editing and Publishing\n")
         ("j" "Jira Task" entry (file+headline "~/Dropbox/org/helvia.org" "AI Lab Tasks")
-         "* TODO [%^{ticket}] %^{title}\n[[https://helvia.atlassian.net/browse/%\1][Link to Ticket]]"))))
+         "* TODO [%^{ticket}] %^{title}\n[[https://helvia.atlassian.net/browse/%\1][Link to Ticket]]")
+        ("r" "Book" entry (file+headline "~/Dropbox/org/reading" "Reading List")
+          " TO-READ %^{author} - %^{title}")))
 
-(setq org-log-into-drawer t)
-(setq org-log-done 'time)
+  (setq org-log-into-drawer t)
+  (setq org-log-done 'time)
+  (setq org-fontify-done-headline t)
+  (set-face-attribute 'org-done nil :strike-through t)
 
-(setq org-agenda-custom-commands
+  (setq org-agenda-custom-commands
       '(("n" "Agenda and all TODOs"
                 agenda ""
                 ((alltodo "")))))
 
-(setq org-agenda-log-mode-items '(closed clock state))
+  (setq org-agenda-log-mode-items '(closed clock state))
 
-(add-to-list 'org-agenda-custom-commands
+  (add-to-list 'org-agenda-custom-commands
              '("W" "Weekly review"
                agenda ""
                ((org-agenda-start-day "-14d")
@@ -132,6 +172,24 @@
                 (org-agenda-start-with-log-mode '(closed clock))
                 (org-agenda-skip-function '(org-agenda-skip-entry-if 'nottodo 'done)))))
 
+  (setq! org-todo-keywords
+      '((sequence
+         "TODO(t)"
+         "STRT(s)"
+         "WAIT(w@)"
+         "PROJ(p)"
+         "|"
+         "DONE(d!)"
+         "KILL(c!)" )))
+
+  (setq! org-todo-keyword-faces
+      '(("TODO" :foreground "#cc4d3e" :weight bold)
+       ("STRT" :foreground "#85C7A1" :weight bold)
+       ("WAIT" :foreground "#83898d" :weight bold)
+       ("PROJ" :foreground "#896ccc" :weight bold)
+       ("DONE" :foreground "#2b8c63" :weight bold)
+       ("KILL" :foreground "#5d6265" :weight bold)))
+  )
 
 ; I am not able to make this work. Let's try again anothe time.
 ;
@@ -215,13 +273,15 @@
   (denote-rename-buffer-mode 1))
 
 
-
 ;; Tell Emacs where to get the Typst grammar
-(setq treesit-language-source-alist
-      (append treesit-language-source-alist
-              '((typst . ("https://github.com/uben0/tree-sitter-typst")))))
+(when (boundp 'treesit-language-source-alist)
+  (setq treesit-language-source-alist
+        (append treesit-language-source-alist
+                '((typst . ("https://github.com/uben0/tree-sitter-typst"))))))
 
-;; Keybindings
+;;;;
+;;;; Keybindings
+;;;;
 
 (map! :leader
       (:prefix ("j" . "journal") ;; org-journal bindings

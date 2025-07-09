@@ -8,14 +8,16 @@
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
-(package! typescript-mode)
-(package! hackernews)
-(package! obsidian)
-(package! mastodon)
-(package! calibredb)
-(package! key-chord) ;; Used to enable the jk combination as <Esc>.
-(package! denote)
-(package! typst-ts-mode)
+(package! typescript-mode)      ;; Enable Typescript Support
+(package! hackernews)           ;; Silly HackerNews Client
+(package! obsidian)             ;; Obsidian compatibility layer
+(package! mastodon)             ;; Mastodon Client
+(package! calibredb)            ;; Calibre Interface
+(package! key-chord)            ;; Used to enable the jk combination as <Esc> like I havein neovim
+(package! denote)               ;; The Denote Package
+(package! typst-ts-mode)        ;; Typst Mode
+(package! csv-mode)             ;; CSV Mode
+(package! doric-themes)         ;; Collection of minimal color themes
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
