@@ -1,1 +1,2 @@
 sindresorhus/pure
+zsh-users/zsh-syntax-highlighting
