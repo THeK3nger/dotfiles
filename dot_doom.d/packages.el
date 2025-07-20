@@ -11,13 +11,14 @@
 (package! typescript-mode)      ;; Enable Typescript Support
 (package! hackernews)           ;; Silly HackerNews Client
 (package! obsidian)             ;; Obsidian compatibility layer
-(package! mastodon)             ;; Mastodon Client
+;;(package! mastodon)             ;; Mastodon Client
 (package! calibredb)            ;; Calibre Interface
 (package! key-chord)            ;; Used to enable the jk combination as <Esc> like I havein neovim
 (package! denote)               ;; The Denote Package
 (package! typst-ts-mode)        ;; Typst Mode
 (package! csv-mode)             ;; CSV Mode
 (package! doric-themes)         ;; Collection of minimal color themes
+(package! atomic-chrome)        ;; To use Emacs in the Browser
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
