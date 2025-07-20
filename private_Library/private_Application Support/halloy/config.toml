@@ -9,7 +9,7 @@ username = "thek3nger"
 nick_password_file = "/Users/davide/.config/liberasecret"
 password_file = "/Users/davide/.config/liberasecret"
 server = "irc.libera.chat"
-channels = ["#halloy", "#python", "#typescript"]
+channels = ["#halloy", "#lobsters", "#typescript", "#emacs", "#org-mode"]
 
 [buffer.channel.topic]
 enabled = true
@@ -23,3 +23,6 @@ username_format = "full"
 enabled = true
 smart = 30
 username_format = "short"
+
+[actions.sidebar]
+buffer = "replace-pane"
