@@ -33,4 +33,4 @@ set backspace=indent,eol,start	" Backspace behaviour
 
 syntax on
 
-inoremap jh <Esc>
+inoremap jk <Esc>
