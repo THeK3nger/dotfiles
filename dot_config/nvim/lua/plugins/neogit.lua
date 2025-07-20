@@ -17,4 +17,11 @@ return {
 			vim.cmd("GitGutterEnable")
 		end,
 	},
+	{
+		"FabijanZulj/blame.nvim",
+		lazy = false,
+		config = function()
+			require("blame").setup({})
+		end,
+	},
 }

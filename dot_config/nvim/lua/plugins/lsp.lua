@@ -8,39 +8,7 @@ return {
 			"hrsh7th/nvim-cmp", -- Optional: Autocompletion
 			"hrsh7th/cmp-nvim-lsp", -- Optional: LSP source for nvim-cmp
 		},
-		config = function()
-			local lspconfig = require("lspconfig")
-
-			-- Example: Lua
-			lspconfig.lua_ls.setup({
-				settings = {
-					Lua = {
-						diagnostics = { globals = { "vim" } },
-					},
-				},
-			})
-
-			-- Example: Python
-			lspconfig.pyright.setup({})
-
-			-- Example: TypeScript/JavaScript
-			lspconfig.ts_ls.setup({})
-
-			-- Odin
-			lspconfig.ols.setup({})
-
-			-- Haskell
-			lspconfig.hls.setup({})
-
-			-- Keybindings for LSP
-			local on_attach = function(_, bufnr)
-				local opts = { buffer = bufnr, silent = true }
-				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-				vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-				vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-			end
-		end,
+		-- Configurations are handled by mason-lspconfig. If I set up them here, I get duplicated diagnostic sources.
 	},
 	{
 		"williamboman/mason.nvim",

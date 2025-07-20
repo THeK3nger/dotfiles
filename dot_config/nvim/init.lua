@@ -8,17 +8,17 @@ require("options")
 require("config.lazy")
 
 vim.o.guifont = "JetBrainsMono Nerd Font"
-vim.cmd.colorscheme("melange")
+-- vim.cmd.colorscheme("melange")
+-- kvim.cmd.colorscheme("onedark")
+vim.cmd.colorscheme("kanagawa")
 vim.opt.termguicolors = true
 
 -- Diagnostic
 vim.diagnostic.config({
-	-- Use the default configuration
-	virtual_lines = true,
-
-	-- Alternatively, customize specific options
-	-- virtual_lines = {
-	--  -- Only show virtual line diagnostics for the current cursor line
-	--  current_line = true,
-	-- },
+	virtual_lines = {
+		only_current_line = false,
+		format = function(diagnostic)
+			return string.format("%s [%s]", diagnostic.message, diagnostic.source)
+		end,
+	},
 })
