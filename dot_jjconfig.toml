@@ -26,3 +26,11 @@ program = "mergiraf"
 merge-args = ["merge", "$base", "$left", "$right", "-o", "$output", "--fast"]
 merge-conflict-exit-codes = [1]
 conflict-marker-style = "git"
+
+[merge-tools.diffconflicts]
+program = "nvim"
+merge-args = [
+    "-c", "let g:jj_diffconflicts_marker_length=$marker_length",
+    "-c", "JJDiffConflicts!", "$output", "$base", "$left", "$right",
+]
+merge-tool-edits-conflict-markers = true
