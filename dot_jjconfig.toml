@@ -5,6 +5,7 @@ email = "thek3nger@gmail.com"
 [ui]
 merge-editor = "vscode"
 default-command = "log"
+diff-editor = ["nvim", "-c", "DiffEditor $left $right $output"]
 
 [signing]
 behavior = "own"
