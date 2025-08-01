@@ -13,10 +13,9 @@
   "agent": {
     "default_profile": "ask",
     "default_model": {
-      "provider": "copilot_chat",
+      "provider": "zed.dev",
       "model": "claude-sonnet-4"
     },
-    "version": "2"
   },
   "theme": "One Dark",
   "buffer_font_family": "JetBrains Mono",
