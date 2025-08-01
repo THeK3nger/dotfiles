@@ -10,7 +10,15 @@ return {
 		"julienvincent/hunk.nvim",
 		cmd = { "DiffEditor" },
 		config = function()
-			require("hunk").setup()
+			require("hunk").setup({
+				keys = {
+					global = {
+						quit = { "q" },
+						accept = { "<leader>K" },
+						focus_tree = { "<leader>e" },
+					},
+				},
+			})
 		end,
 	},
 	{
