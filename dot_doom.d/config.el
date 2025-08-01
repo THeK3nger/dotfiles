@@ -68,9 +68,8 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Dropbox/org/")
-(setq org-roam-directory "~/Dropbox/org/notes/")
-(setq org-journal-dir "~/Dropbox/org/journal/")
+(setq org-directory "~/Library/CloudStorage/Dropbox/org/")
+(setq org-journal-dir (concat org-directory "journal/"))
 (setq org-journal-file-type 'weekly)
 (setq org-journal-file-format "%Y%m%d.org")
 (setq org-journal-date-format "%A, %d/%m/%Y")
@@ -146,12 +145,14 @@
 
   ;; Capture Templates
   (setq org-capture-templates
-      '(("b" "Blog Post" entry (file+headline "~/Dropbox/org/main.org" "Blog")
-         "- [ ] Blog Post on %^{title} [0/2]\n** - [ ] Research and Drafting\n** - [ ] Editing and Publishing\n")
-        ("j" "Jira Task" entry (file+headline "~/Dropbox/org/helvia.org" "AI Lab Tasks")
+      `(("b" "Blog Post" entry (file+headline ,(expand-file-name "main.org" org-directory) "Blog")
+         "* TODO Blog Post on %^{title} [0/2]\n** - [ ] Research and Drafting\n** - [ ] Editing and Publishing\n")
+        ("j" "Jira Task" entry (file+headline ,(expand-file-name "helvia.org" org-directory) "AI Lab Tasks")
          "* TODO [%^{ticket}] %^{title}\n[[https://helvia.atlassian.net/browse/%\\1][Link to Ticket]]")
-        ("r" "Book" entry (file+headline "~/Dropbox/org/reading" "Reading List")
-          " TO-READ %^{author} - %^{title}")))
+        ("r" "Book" entry (file+headline ,(expand-file-name "reading.org" org-directory) "Reading List")
+          "* TO-READ %^{author} - %^{title}")
+        ("C" "The ChangeLog" entry (file+headline ,(expand-file-name "main.org" org-directory) "Blog")
+          "* TODO Publish The Changelog - %<%B %Y> [0%]\n** TODO Write The Changelog Draft\n** TODO Final editing of The Changelog on Buttondown")))
 
   (setq org-log-into-drawer t)
   (setq org-log-done 'time)
@@ -201,7 +202,7 @@
 
 ; Deft
 (setq deft-extensions '("txt" "md" "org")
-      deft-directory "~/Dropbox/org/notes"
+      deft-directory (concat org-directory "notes")
       deft-recursive t
       deft-use-filter-string-for-filename t)
 
@@ -213,7 +214,7 @@
 (setq ispell-program-name "aspell")
 (setq ispell-dictionary "en_US")
 
-(setq obsidian-directory "~/Dropbox/Notes")
+(setq obsidian-directory "~/Documents/Notes")
 ;; If you want a different directory of `obsidian-capture':
 (setq obsidian-inbox-directory "_Inbox")
 (setq obsidian-daily-notes-directory "06 - Time")
@@ -242,9 +243,9 @@
 (add-to-list 'auto-mode-alist '("\\.journal\\'" . ledger-mode))
 
 ;; Calibre DB
-(setq calibredb-root-dir "~/Dropbox/Books/Library")
+(setq calibredb-root-dir "~/Library/CloudStorage/Dropbox/Books/Library")
 (setq calibredb-db-dir (expand-file-name "metadata.db" calibredb-root-dir))
-(setq calibredb-library-alist '(("~/Dropbox/Books/Library")))
+(setq calibredb-library-alist '(("~/Library/CloudStorage/Dropbox/Books/Library")))
 
 ;; Remap jk to ESC
 (use-package! key-chord
@@ -254,7 +255,6 @@
   (key-chord-define evil-insert-state-map "jk" 'evil-normal-state))
 
 ;; Denote
-;; (setq denote-directory (expand-file-name "~/Dropbox/org/notes/"))
 (use-package denote
   :ensure t
   :hook (dired-mode . denote-dired-mode)
@@ -266,7 +266,7 @@
    ("C-c n d" . denote-dired)
    ("C-c n g" . denote-grep))
   :config
-  (setq denote-directory (expand-file-name "~/Dropbox/org/notes"))
+  (setq denote-directory (expand-file-name (concat org-directory "notes")))
 
   ;; Automatically rename Denote buffers when opening them so that
   ;; instead of their long file name they have, for example, a literal
