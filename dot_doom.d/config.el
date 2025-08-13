@@ -32,7 +32,8 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;;(setq doom-theme 'doom-one-light)
-(setq doom-theme 'doric-earth)
+;;(setq doom-theme 'doric-earth)
+(setq doom-theme 'modus-operandi)
 
 (after! doom-themes
   (setq doom-themes-enable-bold t
@@ -65,6 +66,9 @@
 ;; )
 
 (add-transient-hook! 'focus-out-hook (atomic-chrome-start-server))
+
+;; Sometimes I do :q! and close Emacs by mistake...
+(setq confirm-kill-emacs #'yes-or-no-p)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -145,7 +149,9 @@
 
   ;; Capture Templates
   (setq org-capture-templates
-      `(("b" "Blog Post" entry (file+headline ,(expand-file-name "main.org" org-directory) "Blog")
+      `(("i" "Inbox" entry (file+headline ,(expand-file-name "main.org" org-directory) "Inbox")
+         "* TODO %^{task}")
+        ("b" "Blog Post" entry (file+headline ,(expand-file-name "main.org" org-directory) "Blog")
          "* TODO Blog Post on %^{title} [0/2]\n** - [ ] Research and Drafting\n** - [ ] Editing and Publishing\n")
         ("j" "Jira Task" entry (file+headline ,(expand-file-name "helvia.org" org-directory) "AI Lab Tasks")
          "* TODO [%^{ticket}] %^{title}\n[[https://helvia.atlassian.net/browse/%\\1][Link to Ticket]]")
