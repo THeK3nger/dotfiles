@@ -86,3 +86,13 @@ matches:
         type: script
         params:
           args: [python3, "/Users/davide/Code/wikitools/cite_conversion.py", "{{clipboard}}"]
+
+  # HLEDGER UTILS
+  - trigger: ";conad"
+    replace: "{{date}} * Conad | Groceries\n  Expenses:Food:Groceries\n Assets:Bank"
+    vars:
+      - name: "date"
+        type: date
+        params:
+          format: "%Y-%m-%d"
+
