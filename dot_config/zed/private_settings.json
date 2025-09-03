@@ -8,14 +8,14 @@
 // from the command palette or from `Zed` application menu.
 {
   "features": {
-    "edit_prediction_provider": "zed"
+    "edit_prediction_provider": "copilot"
   },
   "agent": {
     "default_profile": "ask",
     "default_model": {
-      "provider": "zed.dev",
+      "provider": "copilot_chat",
       "model": "claude-sonnet-4"
-    },
+    }
   },
   "theme": "One Dark",
   "buffer_font_family": "JetBrains Mono",
