@@ -155,7 +155,7 @@
          "* TODO Blog Post on %^{title} [0/2]\n** - [ ] Research and Drafting\n** - [ ] Editing and Publishing\n")
         ("j" "Jira Task" entry (file+headline ,(expand-file-name "helvia.org" org-directory) "AI Lab Tasks")
          "* TODO [%^{ticket}] %^{title}\n[[https://helvia.atlassian.net/browse/%\\1][Link to Ticket]]")
-        ("r" "Book" entry (file+headline ,(expand-file-name "reading.org" org-directory) "Reading List")
+        ("r" "Book" entry (file+headline ,(expand-file-name "read.org" org-directory) "Reading List")
           "* TO-READ %^{author} - %^{title}")
         ("C" "The ChangeLog" entry (file+headline ,(expand-file-name "main.org" org-directory) "Blog")
           "* TODO Publish The Changelog - %<%B %Y> [0%]\n** TODO Write The Changelog Draft\n** TODO Final editing of The Changelog on Buttondown")))
