@@ -29,6 +29,11 @@ map("n", "<leader>bb", "<cmd>Telescope buffers<CR>", { noremap = true })
 map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { noremap = true })
 map("n", "<leader>dd", "<cmd>Telescope diagnostics<CR>", { noremap = true })
 
+-- Buffers Shortcuts
+map("n", "<leader>bn", ":bnext<CR>", { desc = "Next buffer" })
+map("n", "<leader>bp", ":bprevious<CR>", { desc = "Previous buffer" })
+map("n", "<leader>bd", ":bdelete<CR>", { desc = "Delete buffer" })
+
 -- Exit terminal mode
 map("t", "<leader><Esc>", "<C-\\><C-n>", { noremap = true })
 
