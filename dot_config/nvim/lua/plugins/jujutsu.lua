@@ -14,7 +14,7 @@ return {
 				keys = {
 					global = {
 						quit = { "q" },
-						accept = { "<leader>K" },
+						accept = { "<leader>P" },
 						focus_tree = { "<leader>e" },
 					},
 				},

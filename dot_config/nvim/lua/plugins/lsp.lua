@@ -19,8 +19,30 @@ return {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
+			local servers = {
+				ts_ls = {
+					root_dir = require("lspconfig").util.root_pattern({ "package.json", "tsconfig.json" }),
+					single_file_support = false,
+					settings = {},
+				},
+				denols = {
+					root_dir = require("lspconfig").util.root_pattern({ "deno.json", "deno.jsonc" }),
+					single_file_support = false,
+					settings = {},
+				},
+				lua_ls = {},
+				pyright = {},
+				ols = {},
+				hls = {},
+			}
+
+			for server_name, server_config in pairs(servers) do
+				vim.lsp.config(server_name, server_config)
+			end
+
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "pyright", "ts_ls", "ols", "hls" }, -- Adjust as needed
+				ensure_installed = vim.tbl_keys(servers),
+				automatic_enable = true,
 			})
 		end,
 	},
