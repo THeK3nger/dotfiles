@@ -16,7 +16,8 @@ urgency.user.project.Work.coefficient=3
 # Remove age, tags from task next report.
 # taskwarrior-tui reads the labels and columns from these options to display tasks the same way taskwarrior does
 report.next.labels=ID,Active,Age,Deps,P,Project,Tag,Recur,S,Due,Until,Description,Urg
-report.next.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description.truncated_count,urgency
+#report.next.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description.truncated_count,urgency
+report.next.filter=status:pending -WAITING limit:5 
 
 ### taskwarrior-tui configuration options
 
