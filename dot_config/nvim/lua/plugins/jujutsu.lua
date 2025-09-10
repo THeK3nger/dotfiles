@@ -1,6 +1,7 @@
 return {
 	{
 		"swaits/lazyjj.nvim",
+		cmd = { "LazyJJ" },
 		dependencies = "nvim-lua/plenary.nvim",
 		opts = {
 			mapping = "<leader>jj",
