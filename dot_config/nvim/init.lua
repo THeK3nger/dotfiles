@@ -22,3 +22,13 @@ vim.diagnostic.config({
 		end,
 	},
 })
+
+vim.api.nvim_create_user_command("LspDeno", function()
+	vim.cmd("LspStop ts_ls")
+	vim.cmd("LspStart denols")
+end, {})
+
+vim.api.nvim_create_user_command("LspNode", function()
+	vim.cmd("LspStop denols")
+	vim.cmd("LspStart ts_ls")
+end, {})
