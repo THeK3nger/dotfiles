@@ -322,6 +322,13 @@
  "m" #'org-journal-search-calendar-month
  "y" #'org-journal-search-calendar-year)
 
+
+;;
+;; Ledger
+;;
+
+(setq ledger-default-date-format "%Y-%m-%d")
+
 ;;
 ;; CUSTOM FUNCTIONS
 ;;
