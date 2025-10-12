@@ -11,8 +11,9 @@ diff-editor = ["nvim", "-c", "DiffEditor $left $right $output"]
 behavior = "own"
 backend = "ssh"
 key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMvVdJs4HZOaE/6qEPJ9Vb4TVyY1x3Jp9ZEpZLK2YlbK"
+{{ if eq .chezmoi.os "darwin" -}}
 backends.ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
-
+{{ end -}}
 ## You can also use a path instead of embedding the key
 # key = "~/.ssh/id_for_signing.pub"
 
