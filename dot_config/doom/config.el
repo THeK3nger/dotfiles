@@ -65,20 +65,31 @@
 ;;   (set-face-attribute 'fixed-pitch nil :family "Aporetic Sans Mono" :height 1.0)
 ;; )
 
-(add-transient-hook! 'focus-out-hook (atomic-chrome-start-server))
-
 ;; Sometimes I do :q! and close Emacs by mistake...
 (setq confirm-kill-emacs #'yes-or-no-p)
 
+;; Load local versions of paths variable.
+;; You need to create a ~path.local.el~ file on yourmachine and override the
+;; path variables.
+(let ((local-paths (expand-file-name "path.local.el" doom-user-dir)))
+  (when (file-exists-p local-paths)
+    (load local-paths)))
+
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Library/CloudStorage/Dropbox/org/")
+
+(setq org-directory my/org-directory)
 (setq org-journal-dir (concat org-directory "journal/"))
 (setq org-journal-file-type 'weekly)
 (setq org-journal-file-format "%Y%m%d.org")
 (setq org-journal-date-format "%A, %d/%m/%Y")
 
 (setq org-id-method 'ts)
+
+;; Calibre DB
+(setq calibredb-root-dir my/calibre-directory)
+(setq calibredb-db-dir (expand-file-name "metadata.db" calibredb-root-dir))
+(setq calibredb-library-alist '((my/calibre-directory)))
 
 ;; Force system time locale to English
 (setq system-time-locale "C")
@@ -220,7 +231,7 @@
 (setq ispell-program-name "aspell")
 (setq ispell-dictionary "en_US")
 
-(setq obsidian-directory "~/Documents/Notes")
+(setq obsidian-directory my/obsidian-directory)
 ;; If you want a different directory of `obsidian-capture':
 (setq obsidian-inbox-directory "_Inbox")
 (setq obsidian-daily-notes-directory "06 - Time")
@@ -248,10 +259,6 @@
 ;; To open files with .journal extension in hledger-mode
 (add-to-list 'auto-mode-alist '("\\.journal\\'" . ledger-mode))
 
-;; Calibre DB
-(setq calibredb-root-dir "~/Library/CloudStorage/Dropbox/Books/Library")
-(setq calibredb-db-dir (expand-file-name "metadata.db" calibredb-root-dir))
-(setq calibredb-library-alist '(("~/Library/CloudStorage/Dropbox/Books/Library")))
 
 ;; Remap jk to ESC
 (use-package! key-chord

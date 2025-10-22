@@ -18,7 +18,6 @@
 (package! typst-ts-mode)        ;; Typst Mode
 (package! csv-mode)             ;; CSV Mode
 (package! doric-themes)         ;; Collection of minimal color themes
-(package! atomic-chrome)        ;; To use Emacs in the Browser
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
