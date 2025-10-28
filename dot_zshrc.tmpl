@@ -9,8 +9,6 @@ export EDITOR="nvim"
 
 export NPM_TOKEN={{ onepasswordRead "op://Private/NPM_TOKEN/credenziale" | quote }}
 
-export MAVEN_OPTS="--add-opens=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.jvm=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED"
-
 setopt hist_ignore_all_dups # remove older duplicate entries from history
 setopt hist_reduce_blanks # remove superfluous blanks from history items
 setopt inc_append_history # save history entries as soon as they are entered
@@ -38,10 +36,6 @@ export PATH="$HOME/.poetry/bin:$PATH"
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.emacs.d/bin/:$PATH
 export PATH=$HOME/Library/Python/3.8/bin:$PATH
-
-export QSHARD_DAILY_PATH="/Users/davide/Dropbox/Hypomnemata/Daily Notes"
-
-#SPACESHIP_TIME_SHOW=true
 
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
