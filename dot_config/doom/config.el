@@ -399,3 +399,9 @@
   "Export all DONE tasks for today."
   (interactive)
   (+org-export-done-tasks-for-date (format-time-string "%Y-%m-%d")))
+
+;; Org Social
+
+(setq org-social-file (concat org-directory "social.org"))  ;; Path to your local file
+(setq org-social-relay "https://org-social-relay.andros.dev/")  ;; Relay server
+(setq org-social-my-public-url "https://davideaversa.it/social.org")  ;; Your public URL

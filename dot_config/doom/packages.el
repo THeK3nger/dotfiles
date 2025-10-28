@@ -18,7 +18,11 @@
 (package! typst-ts-mode)        ;; Typst Mode
 (package! csv-mode)             ;; CSV Mode
 (package! doric-themes)         ;; Collection of minimal color themes
-
+(package! org-social
+  :recipe (:host github :repo "tanrax/org-social.el"
+           :branch "develop"
+           :files (:defaults "ui/*.el" "ui/buffers/*.el")))
+  
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
 ;; https://github.com/raxod502/straight.el#the-recipe-format
