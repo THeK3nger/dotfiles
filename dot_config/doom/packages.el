@@ -18,6 +18,7 @@
 (package! typst-ts-mode)        ;; Typst Mode
 (package! csv-mode)             ;; CSV Mode
 (package! doric-themes)         ;; Collection of minimal color themes
+(package! request)
 (package! org-social
   :recipe (:host github :repo "tanrax/org-social.el"
            :branch "develop"
