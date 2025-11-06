@@ -1,4 +1,4 @@
-theme = "adwaita-dark"
+theme = "nord"
 
 [keys.insert]
 j = { k = "normal_mode"}
