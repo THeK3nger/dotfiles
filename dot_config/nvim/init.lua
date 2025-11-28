@@ -9,8 +9,9 @@ require("config.lazy")
 
 vim.o.guifont = "JetBrainsMono Nerd Font"
 -- vim.cmd.colorscheme("melange")
--- kvim.cmd.colorscheme("onedark")
-vim.cmd.colorscheme("kanagawa")
+-- vim.cmd.colorscheme("onedark")
+-- vim.cmd.colorscheme("kanagawa")
+vim.cmd.colorscheme("nord")
 vim.opt.termguicolors = true
 
 -- Diagnostic

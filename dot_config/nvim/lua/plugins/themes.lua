@@ -12,4 +12,5 @@ return {
 		end,
 	},
 	{ "rebelot/kanagawa.nvim" },
+	{ "arcticicestudio/nord-vim" },
 }
