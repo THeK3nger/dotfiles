@@ -5,3 +5,7 @@ args = ["--stdio"]
 [[language]]
 name = "markdown"
 language-servers = ["markdown-oxide", "harper-ls"]
+
+[[language]]
+name = "python"
+language-servers = ["ruff"]
