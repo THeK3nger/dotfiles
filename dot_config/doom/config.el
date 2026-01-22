@@ -340,65 +340,6 @@
 ;; CUSTOM FUNCTIONS
 ;;
 
-(defun +org-export-done-tasks-for-date (date)
-  "Export all DONE tasks for a specific date in the format:
-* [x] <Task Title> <Timestamp>"
-  (interactive "sEnter date (YYYY-MM-DD): ")
-  (let ((output-buffer (get-buffer-create "*Done Tasks Export*"))
-        (results '()))
-
-    (with-current-buffer output-buffer
-      (erase-buffer)
-      (insert (format "# Done Tasks for %s\n\n" date)))
-
-    ;; Search through all org files in agenda
-    (dolist (file (org-agenda-files))
-      (when (file-exists-p file)
-        (with-temp-buffer
-          (insert-file-contents file)
-          (goto-char (point-min))
-
-          ;; Search for DONE tasks with regex
-          (while (re-search-forward "^\\*+\\s-+DONE\\s-+\\(.+\\)$" nil t)
-            (let* ((task-title (string-trim (match-string 1)))
-                   (task-start (match-beginning 0))
-                   (task-end (save-excursion
-                              (if (re-search-forward "^\\*+" nil t)
-                                  (match-beginning 0)
-                                (point-max))))
-                   (timestamp nil))
-
-              ;; Look for CLOSED timestamp in the task section
-              (save-excursion
-                (goto-char task-start)
-                (when (re-search-forward (concat "CLOSED: \\[" date "[^]]*\\]") task-end t)
-                  (setq timestamp (match-string 0))))
-
-              ;; If we found a CLOSED timestamp for the requested date, add to results
-              (when timestamp
-                (push (cons task-title timestamp) results)))))))
-
-    ;; Output results
-    (dolist (result (reverse results))
-      (with-current-buffer output-buffer
-        (insert (format "* [x] %s %s\n" (car result) (cdr result)))))
-
-    ;; If no results, show debug info
-    (when (not results)
-      (with-current-buffer output-buffer
-        (insert "No DONE tasks found for this date.\n\n")
-        (insert "Debug: Searching for tasks with DONE state\n")
-        (insert (format "Debug: Looking for CLOSED timestamps containing '%s'\n" date))
-        (insert (format "Debug: Agenda files: %s\n" (org-agenda-files)))))
-
-    ;; Display the results
-    (switch-to-buffer output-buffer)
-    (org-mode)))
-
-(defun +org-export-done-tasks-today ()
-  "Export all DONE tasks for today."
-  (interactive)
-  (+org-export-done-tasks-for-date (format-time-string "%Y-%m-%d")))
 
 ;; Org Social
 
