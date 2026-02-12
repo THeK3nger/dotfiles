@@ -8,7 +8,7 @@
 // from the command palette or from `Zed` application menu.
 {
   "features": {
-    "edit_prediction_provider": "copilot"
+    "edit_prediction_provider": "zed"
   },
   "agent": {
     "inline_assistant_model": {
@@ -18,10 +18,10 @@
     "default_profile": "ask",
     "default_model": {
       "provider": "copilot_chat",
-      "model": "gpt-5"
+      "model": "claude-sonnet-4.5"
     }
   },
-  "theme": "Ayu Dark",
+  "theme": "One Dark",
   "buffer_font_family": "JetBrains Mono",
   "buffer_font_size": 15.0,
   "vim_mode": true,
