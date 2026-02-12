@@ -26,3 +26,6 @@ username_format = "short"
 
 [actions.sidebar]
 buffer = "replace-pane"
+
+[preview.card]
+exclude = { criteria = [{ server_message = "topic" }] }
