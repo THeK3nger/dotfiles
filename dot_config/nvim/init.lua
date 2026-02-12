@@ -24,6 +24,7 @@ vim.o.updatetime = 250
 vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
 
 vim.lsp.enable("gleam")
+
 vim.api.nvim_create_user_command("LspDeno", function()
 	vim.cmd("LspStop ts_ls")
 	vim.cmd("LspStart denols")
