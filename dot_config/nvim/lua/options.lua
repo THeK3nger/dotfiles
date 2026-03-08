@@ -3,7 +3,7 @@ local indent_size = 4
 
 vim.opt.tabstop = indent_size
 vim.opt.softtabstop = indent_size
-vim.opt.shiftwidth = 2
+vim.opt.shiftwidth = indent_size
 vim.opt.expandtab = true
 vim.opt.smarttab = true
 vim.opt.autoindent = true
