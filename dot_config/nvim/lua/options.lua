@@ -26,3 +26,6 @@ vim.opt.mouse = "a"
 vim.opt.history = 1000
 
 vim.opt.autoread = true
+
+vim.opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
+vim.opt.pumborder = "single"

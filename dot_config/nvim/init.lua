@@ -12,7 +12,6 @@ vim.o.guifont = "JetBrainsMono Nerd Font"
 -- vim.cmd.colorscheme("onedark")
 -- vim.cmd.colorscheme("kanagawa")
 vim.cmd.colorscheme("nord")
-vim.opt.termguicolors = true
 
 -- Diagnostic
 vim.diagnostic.config({
@@ -26,11 +25,11 @@ vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {f
 vim.lsp.enable("gleam")
 
 vim.api.nvim_create_user_command("LspDeno", function()
-	vim.cmd("LspStop ts_ls")
-	vim.cmd("LspStart denols")
+	vim.lsp.enable("ts_ls", false)
+	vim.lsp.enable("denols")
 end, {})
 
 vim.api.nvim_create_user_command("LspNode", function()
-	vim.cmd("LspStop denols")
-	vim.cmd("LspStart ts_ls")
+	vim.lsp.enable("denols", false)
+	vim.lsp.enable("ts_ls")
 end, {})
