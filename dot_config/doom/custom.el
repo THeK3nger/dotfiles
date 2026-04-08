@@ -94,4 +94,4 @@
  ;; If there is more than one, they won't work right.
  )
 
-(setq fancy-splash-image (concat doom-private-dir "glyph_color.png"))
+(setq fancy-splash-image (concat doom-user-dir "glyph_color.png"))

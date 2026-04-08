@@ -89,7 +89,7 @@
 ;; Calibre DB
 (setq calibredb-root-dir my/calibre-directory)
 (setq calibredb-db-dir (expand-file-name "metadata.db" calibredb-root-dir))
-(setq calibredb-library-alist '((my/calibre-directory)))
+(setq calibredb-library-alist `((,my/calibre-directory)))
 
 ;; Force system time locale to English
 (setq system-time-locale "C")
@@ -178,8 +178,8 @@
 
   (setq org-agenda-custom-commands
       '(("n" "Agenda and all TODOs"
-                agenda ""
-                ((alltodo "")))))
+         ((agenda "")
+          (alltodo "")))))
 
   (setq org-agenda-log-mode-items '(closed clock state))
 
@@ -217,11 +217,11 @@
 ;      '(("TODO" . org-warning) ("STARTED" . "yellow")
 ;        ("CANCELED" . (:foreground "blue" :weight bold)))))
 
-; Deft
-(setq deft-extensions '("txt" "md" "org")
-      deft-directory (concat org-directory "notes")
-      deft-recursive t
-      deft-use-filter-string-for-filename t)
+;; Deft (disabled — using Denote instead)
+;; (setq deft-extensions '("txt" "md" "org")
+;;       deft-directory (concat org-directory "notes")
+;;       deft-recursive t
+;;       deft-use-filter-string-for-filename t)
 
 ; Markdown
 (setq markdown-enable-wiki-links t)
@@ -268,8 +268,7 @@
   (key-chord-define evil-insert-state-map "jk" 'evil-normal-state))
 
 ;; Denote
-(use-package denote
-  :ensure t
+(use-package! denote
   :hook (dired-mode . denote-dired-mode)
   :bind
   (("C-c n n" . denote)

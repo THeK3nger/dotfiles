@@ -8,10 +8,9 @@
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
-(package! typescript-mode)      ;; Enable Typescript Support
+;;(package! typescript-mode)      ;; Superseded by built-in typescript-ts-mode in Emacs 29+
 (package! hackernews)           ;; Silly HackerNews Client
 (package! obsidian)             ;; Obsidian compatibility layer
-;;(package! mastodon)             ;; Mastodon Client
 (package! calibredb)            ;; Calibre Interface
 (package! key-chord)            ;; Used to enable the jk combination as <Esc> like I havein neovim
 (package! denote)               ;; The Denote Package
