@@ -47,3 +47,4 @@ end, {})
 vim.api.nvim_create_user_command("CmpEnable", function()
 	require("cmp").setup.buffer({ enabled = true })
 end, {})
+
