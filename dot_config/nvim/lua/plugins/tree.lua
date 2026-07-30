@@ -1,7 +1,34 @@
 local M = {
 	"nvim-treesitter/nvim-treesitter",
+	branch = "main",
 	event = { "BufReadPre", "BufNewFile" },
 	build = ":TSUpdate",
+	config = function()
+		require("nvim-treesitter").install({
+			"lua",
+			"python",
+			"javascript",
+			"typescript",
+			"tsx",
+			"rust",
+			"vim",
+			"vimdoc",
+			"bash",
+			"markdown",
+			"markdown_inline",
+			"json",
+			"yaml",
+			"toml",
+		})
+
+		-- The main branch no longer enables highlighting by default;
+		-- turn it on for every buffer that has a parser available.
+		vim.api.nvim_create_autocmd("FileType", {
+			callback = function(args)
+				pcall(vim.treesitter.start, args.buf)
+			end,
+		})
+	end,
 }
 
 local T = {

@@ -11,7 +11,8 @@ vim.o.guifont = "JetBrainsMono Nerd Font"
 -- vim.cmd.colorscheme("melange")
 -- vim.cmd.colorscheme("onedark")
 -- vim.cmd.colorscheme("kanagawa")
-vim.cmd.colorscheme("nord")
+-- vim.cmd.colorscheme("nord")
+vim.cmd.colorscheme("catppuccin-nvim")
 
 -- Diagnostic
 vim.diagnostic.config({

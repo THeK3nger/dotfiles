@@ -45,6 +45,10 @@ return {
 		end,
 	},
 	{
+		"mbbill/undotree",
+		cmd = { "UndotreeToggle", "UndotreeFocus", "UndotreeHide", "UndotreeShow" },
+	},
+	{
 		"folke/zen-mode.nvim",
 		cmd = { "ZenMode" },
 		opts = {
