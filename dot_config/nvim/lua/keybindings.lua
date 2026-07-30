@@ -30,8 +30,8 @@ map("n", "<leader>bd", ":bdelete<CR>", { desc = "Delete buffer" })
 -- Exit terminal mode
 map("t", "<leader><Esc>", "<C-\\><C-n>")
 
--- Undotree (built-in)
-map("n", "<leader>u", "<cmd>Undotree<CR>", { desc = "Undotree" })
+-- Undotree
+map("n", "<leader>u", "<cmd>UndotreeToggle<CR>", { desc = "Undotree" })
 
 -- Oil
 map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
