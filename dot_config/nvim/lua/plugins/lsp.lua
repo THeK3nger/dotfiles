@@ -27,6 +27,26 @@ return {
 					client.server_capabilities.hoverProvider = false
 				end,
 			})
+
+			-- denols and ts_ls both target TypeScript; only one may attach per
+			-- project or they fight over diagnostics/formatting. denols owns
+			-- projects with a deno.json(c), ts_ls owns everything else.
+			vim.lsp.config("denols", {
+				root_dir = function(bufnr, on_dir)
+					local root = vim.fs.root(bufnr, { "deno.json", "deno.jsonc" })
+					if root then
+						on_dir(root)
+					end
+				end,
+			})
+			vim.lsp.config("ts_ls", {
+				root_dir = function(bufnr, on_dir)
+					if vim.fs.root(bufnr, { "deno.json", "deno.jsonc" }) then
+						return
+					end
+					on_dir(vim.fs.root(bufnr, { "package.json", "tsconfig.json", "jsconfig.json", ".git" }))
+				end,
+			})
 		end,
 	},
 }
