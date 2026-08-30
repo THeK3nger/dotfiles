@@ -1,4 +1,5 @@
 # ~/.zshrc
+#zmodload zsh/zprof
 
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=100000
@@ -27,6 +28,7 @@ alias p4merge='/Applications/p4merge.app/Contents/MacOS/p4merge'
 alias fsl='fossil'
 alias killdsstore='find . -name ".DS_Store" -type f -delete -print'
 alias hh=hophop
+alias claude-work='CLAUDE_CONFIG_DIR=~/.claude-work /Users/davide/.local/bin/claude'
 
 source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
 antidote load ${ZDOTDIR:-$HOME}/.zsh_plugins.txt
@@ -39,9 +41,6 @@ export PATH=$HOME/Library/Python/3.8/bin:$PATH
 
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-
-  autoload -Uz compinit
-  compinit
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -91,9 +90,31 @@ eval "$(pyenv init -)"
 [[ ! -r /Users/davide/.opam/opam-init/init.zsh ]] || source /Users/davide/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
 fpath=(/Users/davide/.docker/completions $fpath)
+fpath=(~/.zsh/completions $fpath)
 autoload -Uz compinit
 compinit
 # End of Docker CLI completions
 
 # Temporary Fix for Emacs Path
 export PATH="/Applications/Emacs.app/Contents/MacOS/bin:$PATH"
+
+# Added by Antigravity
+export PATH="/Users/davide/.antigravity/antigravity/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+
+nvm() {
+    unfunction nvm
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    nvm "$@"
+}
+
+# zprof
+
+# bun completions
+[ -s "/Users/davide/.bun/_bun" ] && source "/Users/davide/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
