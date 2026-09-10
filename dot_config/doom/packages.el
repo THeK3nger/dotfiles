@@ -8,7 +8,6 @@
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
-;;(package! typescript-mode)      ;; Superseded by built-in typescript-ts-mode in Emacs 29+
 (package! hackernews)           ;; Silly HackerNews Client
 (package! obsidian)             ;; Obsidian compatibility layer
 (package! calibredb)            ;; Calibre Interface
@@ -18,6 +17,11 @@
 (package! csv-mode)             ;; CSV Mode
 (package! doric-themes)         ;; Collection of minimal color themes
 (package! request)
+
+(package! shell-maker)
+(package! acp)
+(package! agent-shell)
+
 ;;(package! org-social
 ;;  :recipe (:host github :repo "tanrax/org-social.el"
 ;;           :branch "develop"

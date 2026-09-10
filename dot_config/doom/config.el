@@ -329,6 +329,12 @@
  "y" #'org-journal-search-calendar-year)
 
 
+;; Agent-Shell Binding
+(map! :leader
+      (:prefix ("a" . "AI")
+       :desc "Agent shell" "a" #'agent-shell
+       :desc "Claude agent" "c" #'agent-shell-anthropic-start-claude-code))
+
 ;;
 ;; Ledger
 ;;
