@@ -79,7 +79,7 @@
 ;; change `org-directory'. It must be set before org loads!
 
 (setq org-directory my/org-directory)
-(setq org-journal-dir (concat org-directory "journal/"))
+(setq org-journal-dir (concat org-directory "/journal/"))
 (setq org-journal-file-type 'weekly)
 (setq org-journal-file-format "%Y%m%d.org")
 (setq org-journal-date-format "%A, %d/%m/%Y")
@@ -278,7 +278,7 @@
    ("C-c n d" . denote-dired)
    ("C-c n g" . denote-grep))
   :config
-  (setq denote-directory (expand-file-name (concat org-directory "notes")))
+  (setq denote-directory (expand-file-name (concat org-directory "/notes")))
 
   ;; Automatically rename Denote buffers when opening them so that
   ;; instead of their long file name they have, for example, a literal
@@ -345,9 +345,3 @@
 ;; CUSTOM FUNCTIONS
 ;;
 
-
-;; Org Social
-
-(setq org-social-file (concat org-directory "social.org"))  ;; Path to your local file
-(setq org-social-relay "https://org-social-relay.andros.dev/")  ;; Relay server
-(setq org-social-my-public-url "https://davideaversa.it/social.org")  ;; Your public URL
