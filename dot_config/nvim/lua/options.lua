@@ -12,10 +12,11 @@ vim.opt.hlsearch = true
 
 vim.opt.relativenumber = true
 vim.opt.number = true
+vim.opt.signcolumn = "yes"
 vim.opt.title = true
 
 vim.opt.spell = true
-vim.opt.spelllang = "en_us"
+vim.opt.spelllang = { "en_us", "it" }
 
 vim.opt.undofile = true
 vim.opt.encoding = "utf-8"
@@ -27,5 +28,8 @@ vim.opt.history = 1000
 
 vim.opt.autoread = true
 
-vim.opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
+vim.opt.spellfile = {
+	vim.fn.stdpath("config") .. "/spell/en.utf-8.add",
+	vim.fn.stdpath("config") .. "/spell/it.utf-8.add",
+}
 vim.opt.pumborder = "single"

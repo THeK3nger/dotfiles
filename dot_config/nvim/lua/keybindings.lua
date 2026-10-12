@@ -20,6 +20,9 @@ map("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Find Files" })
 map("n", "<leader>gg", "<cmd>Telescope live_grep<CR>", { desc = "Live Grep" })
 map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>")
 map("n", "<leader>dd", "<cmd>Telescope diagnostics<CR>", { desc = "Diagnostics" })
+map("n", "<leader>de", function()
+	vim.diagnostic.open_float(nil, { focus = false, border = "rounded", source = true })
+end, { desc = "Line diagnostics" })
 
 -- Buffers Shortcuts
 map("n", "<leader>bb", "<cmd>Telescope buffers<CR>", { desc = "Buffers" })
@@ -47,4 +50,3 @@ end, {})
 vim.api.nvim_create_user_command("CmpEnable", function()
 	require("cmp").setup.buffer({ enabled = true })
 end, {})
-
