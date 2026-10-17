@@ -117,3 +117,8 @@ nvm() {
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Utility to keep the laptop awake for x hours
+remote() {
+    caffeinate -s -t "$((${1:-4} * 3600))" &
+}
