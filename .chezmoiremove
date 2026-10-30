@@ -1,3 +1,5 @@
 .config/nvim/lua/plugins/precognition.lua
 .config/nvim/lua/plugins/copilot.lua
 .doom.d
+.config/nvim/lua/plugins/cmp.lua
+.config/nvim/lua/plugins/neogit.lua
