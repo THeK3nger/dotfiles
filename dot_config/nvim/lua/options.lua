@@ -5,10 +5,6 @@ vim.opt.tabstop = indent_size
 vim.opt.softtabstop = indent_size
 vim.opt.shiftwidth = indent_size
 vim.opt.expandtab = true
-vim.opt.smarttab = true
-vim.opt.autoindent = true
-
-vim.opt.hlsearch = true
 
 vim.opt.relativenumber = true
 vim.opt.number = true
@@ -19,14 +15,10 @@ vim.opt.spell = true
 vim.opt.spelllang = { "en_us", "it" }
 
 vim.opt.undofile = true
-vim.opt.encoding = "utf-8"
 
 vim.opt.ignorecase = true
+vim.opt.smartcase = true
 vim.opt.conceallevel = 1
-vim.opt.mouse = "a"
-vim.opt.history = 1000
-
-vim.opt.autoread = true
 
 vim.opt.spellfile = {
 	vim.fn.stdpath("config") .. "/spell/en.utf-8.add",

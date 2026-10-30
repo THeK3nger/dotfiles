@@ -44,9 +44,9 @@ end, { desc = "Toggle hidden files in oil.nvim" })
 
 -- Various Custom Commands
 vim.api.nvim_create_user_command("CmpDisable", function()
-	require("cmp").setup.buffer({ enabled = false })
+	vim.b.completion = false
 end, {})
 
 vim.api.nvim_create_user_command("CmpEnable", function()
-	require("cmp").setup.buffer({ enabled = true })
+	vim.b.completion = true
 end, {})
