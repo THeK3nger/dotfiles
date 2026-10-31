@@ -15,3 +15,9 @@ vim.diagnostic.config({
 	severity_sort = true,
 	float = { border = "rounded", source = true },
 })
+
+-- Autoreload files. Useful if they get changed by coding agents in the background.
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
+	command = "silent! checktime",
+})
