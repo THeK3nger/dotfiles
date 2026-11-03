@@ -9,7 +9,7 @@ PATH="$HOME/.cargo/bin:$PATH"
 export EDITOR="nvim"
 
 {{ if and (eq .chezmoi.os "darwin") (lookPath "op") -}}
-export NPM_TOKEN={{ output "pass-cli" "item" "view" "pass://Personal/NPM_TOKEN/credenziale" | quote }}
+export NPM_TOKEN={{ output "pass-cli" "item" "view" "pass://Personal/NPM_TOKEN/credenziale" | trim | quote }}
 {{- end }}
 
 setopt hist_ignore_all_dups # remove older duplicate entries from history
