@@ -9,7 +9,7 @@ return {
 	},
 	{ -- A tool for splitting diffs in Neovim
 		"julienvincent/hunk.nvim",
-		cmd = { "DiffEditor" },
+		cmd = { "HunkDiffEditor" },
 		config = function()
 			require("hunk").setup({
 				keys = {
