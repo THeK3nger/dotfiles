@@ -68,9 +68,14 @@
 ;; Sometimes I do :q! and close Emacs by mistake...
 (setq confirm-kill-emacs #'yes-or-no-p)
 
-;; Load local versions of paths variable.
-;; You need to create a ~path.local.el~ file on yourmachine and override the
-;; path variables.
+;; Portable defaults; path.local.el may override these with `setq'.
+(defvar my/org-directory (expand-file-name "~/org")
+  "Root directory for Org files, journals, and Denote notes.")
+(defvar my/calibre-directory (expand-file-name "~/Calibre Library")
+  "Root directory of the Calibre library.")
+(defvar my/obsidian-directory (expand-file-name "~/Documents/Notes")
+  "Root directory of the Obsidian vault.")
+
 (let ((local-paths (expand-file-name "path.local.el" doom-user-dir)))
   (when (file-exists-p local-paths)
     (load local-paths)))
@@ -163,11 +168,9 @@
       `(("i" "Inbox" entry (file+headline ,(expand-file-name "main.org" org-directory) "Inbox")
          "* TODO %^{task}")
         ("b" "Blog Post" entry (file+headline ,(expand-file-name "main.org" org-directory) "Blog")
-         "* TODO Blog Post on %^{title} [0/2]\n** - [ ] Research and Drafting\n** - [ ] Editing and Publishing\n")
+         "* TODO Blog Post on %^{title} [0/2]\n- [ ] Research and Drafting\n- [ ] Editing and Publishing\n")
         ("j" "Jira Task" entry (file+headline ,(expand-file-name "helvia.org" org-directory) "AI Lab Tasks")
          "* TODO [%^{ticket}] %^{title}\n[[https://helvia.atlassian.net/browse/%\\1][Link to Ticket]]")
-        ("r" "Book" entry (file+headline ,(expand-file-name "read.org" org-directory) "Reading List")
-          "* TO-READ %^{author} - %^{title}")
         ("C" "The ChangeLog" entry (file+headline ,(expand-file-name "main.org" org-directory) "Blog")
           "* TODO Publish The Changelog - %<%B %Y> [0%]\n** TODO Write The Changelog Draft\n** TODO Final editing of The Changelog on Buttondown")))
 
@@ -266,6 +269,19 @@
   (key-chord-mode 1)
   (setq key-chord-two-keys-delay 0.5)
   (key-chord-define evil-insert-state-map "jk" 'evil-normal-state))
+
+;; Ghostel terminal: SPC o g (or M-x ghostel); C-u opens a new terminal.
+;; Native module: M-x ghostel-download-module (also offered on first launch).
+;; Evil: ESC enters normal state; use C-c ESC inside full-screen terminal apps.
+(use-package! ghostel
+  :commands ghostel
+  :init
+  (map! :leader
+        :desc "Ghostel terminal" "o g" #'ghostel))
+
+(use-package! evil-ghostel
+  :after (ghostel evil)
+  :hook (ghostel-mode . evil-ghostel-mode))
 
 ;; Denote
 (use-package! denote

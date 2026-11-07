@@ -22,6 +22,9 @@
 (package! acp)
 (package! agent-shell)
 
+(package! ghostel)
+(package! evil-ghostel)
+
 ;;(package! org-social
 ;;  :recipe (:host github :repo "tanrax/org-social.el"
 ;;           :branch "develop"
