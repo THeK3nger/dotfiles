@@ -1,2 +1,12 @@
 .DS_Store
 */.git/**
+
+# Ghostty uses the native configuration directory on each platform.
+{{ if eq .chezmoi.os "darwin" }}
+.config/ghostty
+{{ else if eq .chezmoi.os "linux" }}
+Library/Application Support/com.mitchellh.ghostty
+{{ else }}
+.config/ghostty
+Library/Application Support/com.mitchellh.ghostty
+{{ end }}
