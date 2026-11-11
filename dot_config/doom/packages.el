@@ -9,7 +9,7 @@
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
 (package! hackernews)           ;; Silly HackerNews Client
-(package! obsidian)             ;; Obsidian compatibility layer
+(package! obsidian :disable t)  ;; Obsidian compatibility layer
 (package! calibredb)            ;; Calibre Interface
 (package! key-chord)            ;; Used to enable the jk combination as <Esc> like I havein neovim
 (package! denote)               ;; The Denote Package

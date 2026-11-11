@@ -73,8 +73,6 @@
   "Root directory for Org files, journals, and Denote notes.")
 (defvar my/calibre-directory (expand-file-name "~/Calibre Library")
   "Root directory of the Calibre library.")
-(defvar my/obsidian-directory (expand-file-name "~/Documents/Notes")
-  "Root directory of the Obsidian vault.")
 
 (let ((local-paths (expand-file-name "path.local.el" doom-user-dir)))
   (when (file-exists-p local-paths)
@@ -234,27 +232,6 @@
 (setq ispell-program-name "aspell")
 (setq ispell-dictionary "en_US")
 
-(setq obsidian-directory my/obsidian-directory)
-;; If you want a different directory of `obsidian-capture':
-(setq obsidian-inbox-directory "_Inbox")
-(setq obsidian-daily-notes-directory "06 - Time")
-
-;; Replace standard command with Obsidian.el's in obsidian vault:
-;; (bind-key (kbd "C-c C-o") 'obsidian-follow-link-at-point 'obsidian-mode-map)
-
-;; Use either `obsidian-insert-wikilink' or `obsidian-insert-link':
-;; (bind-key (kbd "C-c C-l") 'obsidian-insert-wikilink 'obsidian-mode-map)
-
-;; Following backlinks
-;; (bind-key (kbd "C-c C-b") 'obsidian-backlink-jump 'obsidian-mode-map)
-
-
-;; Optionally you can also bind `obsidian-jump' and `obsidian-capture'
-;; replace "YOUR_BINDING" with the key of your choice:
-;; (bind-key (kbd "YOUR_BINDING") 'obsidian-jump)
-;; (bind-key (kbd "YOUR_BINDING") 'obsidian-capture)
-;; detecting of Obsidian vault
-(global-obsidian-mode t)
 
 (setq mastodon-instance-url "https://mastodon.social"
       mastodon-active-user "thek3nger")

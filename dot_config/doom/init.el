@@ -104,6 +104,7 @@
        ;;rgb               ; creating color strings
        ;;taskrunner        ; taskrunner for all your projects
        ;;terraform         ; infrastructure as code
+       tree-sitter       ; required by language modules with +tree-sitter
        ;;tmux              ; an API for interacting with tmux
        ;;upload            ; map local to remote projects via ssh/ftp
 
@@ -145,7 +146,7 @@
        ;;lean              ; for folks with too much to prove
        ledger            ; be audit you can be
        lua               ; one-based indices? one-based indices
-       markdown            ; writing docs for people to ignore
+       (markdown +lsp)    ; Markdown editing with Harper through Eglot
        ;;(nim +lsp)          ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
