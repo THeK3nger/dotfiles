@@ -6,6 +6,10 @@
 ;; use 'M-x doom/reload'.
 
 
+;; typst-ts-mode's autoloads file expands `define-compilation-mode', which
+;; needs compile.el loaded when `doom sync' loads package autoloads.
+(require 'compile)
+
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
 (package! hackernews)           ;; Silly HackerNews Client
