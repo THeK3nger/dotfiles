@@ -122,3 +122,5 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 remote() {
     caffeinate -s -t "$((${1:-4} * 3600))" &
 }
+
+eval "$(zoxide init zsh)"
