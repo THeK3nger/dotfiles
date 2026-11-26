@@ -1,0 +1,46 @@
+symbolPreset: nerd
+theme:
+  dark: titanium
+setupVersion: 3
+modelRoles:
+  web: web/kagi
+  smol: openai-codex/gpt-5.6-luna
+  tiny: apple/on-device
+  default: openai-codex/gpt-6.1-sol:medium
+  speech: local/phonon-31m
+dev:
+  autoqaConsent: denied
+retry:
+  fallbackChains:
+    web:
+      - web/perplexity
+      - anthropic/claude-haiku-4-5
+      - openai-codex/gpt-6-luna
+      - xai/grok-4.5
+      - web/zai
+      - web/exa
+      - web/tinyfish
+      - web/jina
+      - web/tavily
+      - web/firecrawl
+      - web/brave
+      - web/kimi
+      - web/parallel
+      - web/synthetic
+      - web/searxng
+      - web/startpage
+      - web/duckduckgo
+      - web/ecosia
+      - web/google
+      - web/mojeek
+      - web/public
+      - web/hosted
+    web/*:
+      - openai-codex/gpt-5.6-luna
+    web/kagi:
+      - web/kagi
+update:
+  auto: false
+defaultThinkingLevel: medium
+memory:
+  backend: mnemopi
